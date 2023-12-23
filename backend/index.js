@@ -11,10 +11,7 @@ import checkAuth from './authUtils/checkAuth.js';
 
 dotenv.config();
 
-const BASE_URL = process.env.BASE_URL;
-
 mongoose.connect(process.env.MONGODB_URL);
-
 
 const app = express();
 app.use(express.json());
