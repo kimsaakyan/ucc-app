@@ -11,9 +11,12 @@ import checkAuth from './authUtils/checkAuth.js';
 
 dotenv.config();
 
-mongoose.connect(
-    `mongodb+srv://admin:${process.env.DB_PASSWORD}@user-data.sjmc7n6.mongodb.net/userStorage?retryWrites=true&w=majority`
-);
+const BASE_URL = process.env.BASE_URL;
+console.log(BASE_URL)
+
+mongoose.connect(process.env.MONGODB_URL);
+
+
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

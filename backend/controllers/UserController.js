@@ -33,7 +33,7 @@ export const createAccount = async (req, res) => {
             {
                 _id: user._id,
             },
-            process.env.SECRET_KEY,
+            process.env.JWT_SECRET_KEY,
             { expiresIn: '30d' }
         );
 
@@ -82,7 +82,7 @@ export const loginAccount = async (req, res) => {
             {
                 _id: user._id,
             },
-            process.env.SECRET_KEY,
+            process.env.JWT_SECRET_KEY,
             { expiresIn: '30d' }
         );
 
