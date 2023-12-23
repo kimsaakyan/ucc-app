@@ -19,8 +19,9 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
     cors({
-        origin: 'https://beamish-valkyrie-8b61d3.netlify.app',
-        // Другие необходимые опции могут быть добавлены здесь
+        origin: ['https://beamish-valkyrie-8b61d3.netlify.app'],
+        methods: ['POST', 'GET'],
+        credentials: true
     })
 );
 app.post('/register', registerValidation, UserController.createAccount);
