@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
     cors({
-        origin: ['https://beamish-valkyrie-8b61d3.netlify.app'],
+        origin: ['https://comfy-longma-82e71f.netlify.app'],
         methods: ['POST', 'GET'],
         credentials: true
     })
