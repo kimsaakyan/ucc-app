@@ -23,6 +23,8 @@ app.use(
         methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
         credentials: true,
         optionsSuccessStatus: 204,
+		exposedHeaders: ['Content-Length', 'X-Foo', 'X-Bar'],
+        allowedHeaders: ['Content-Type', 'Authorization'],
     })
 );
 
