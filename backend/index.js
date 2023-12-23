@@ -18,11 +18,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(
-    cors({
-        origin: 'https://beamish-valkyrie-8b61d3.netlify.app',
-        // Другие необходимые опции могут быть добавлены здесь
-    })
-);
+	cors({
+	  origin: 'https://comfy-longma-82e71f.netlify.app/', // Замените на фактический домен вашего клиентского приложения
+	  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+	  credentials: true,
+	  optionsSuccessStatus: 204,
+	})
+  );
 app.post('/register', registerValidation, UserController.createAccount);
 app.post('/login', loginValidation, UserController.loginAccount);
 app.get('/auth/me', checkAuth, UserController.getMe);
