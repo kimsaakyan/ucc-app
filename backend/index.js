@@ -16,6 +16,14 @@ mongoose.connect(process.env.MONGODB_URL);
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use((req, res, next) => {
+    res.header(
+        'Access-Control-Allow-Origin',
+        'https://beamish-valkyrie-8b61d3.netlify.app'
+    );
+    // Другие необходимые заголовки могут быть добавлены здесь
+    next();
+});
 app.use(cors());
 
 app.post('/register', registerValidation, UserController.createAccount);
