@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from '../../axios';
 
 export const fetchUsers = createAsyncThunk('fetchUsers', async () => {
-    const { data } = await axios.get('https://effervescent-horse-2b38ab.netlify.app/users');
+    const { data } = await axios.get('https://ucc-app-b.vercel.app/users');
     return data;
 });
 
