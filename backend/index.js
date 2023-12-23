@@ -19,14 +19,24 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
     cors({
-        origin: 'https://ucc-app-b.vercel.app', // Замените на фактический домен вашего клиентского приложения
+        origin: 'https://ucc-app-f.vercel.app', // Замените на фактический домен вашего клиентского приложения
         methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
         credentials: true,
         optionsSuccessStatus: 204,
-		exposedHeaders: ['Content-Length', 'X-Foo', 'X-Bar'],
+        exposedHeaders: ['Content-Length', 'X-Foo', 'X-Bar'],
         allowedHeaders: ['Content-Type', 'Authorization'],
     })
 );
+
+app.options('/login', (req, res) => {
+    res.header('Access-Control-Allow-Origin', 'https://ucc-app-f.vercel.app');
+    res.header(
+        'Access-Control-Allow-Methods',
+        'GET, POST, PUT, PATCH, POST, DELETE'
+    );
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.sendStatus(204); // No content
+});
 
 app.post('/register', registerValidation, UserController.createAccount);
 app.post('/login', loginValidation, UserController.loginAccount);
