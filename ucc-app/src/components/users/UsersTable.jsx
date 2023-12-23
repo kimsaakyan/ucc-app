@@ -14,6 +14,7 @@ const UsersTable = () => {
 
     const dispatch = useDispatch();
     const [users, setUsers] = useState([]);
+    const [selectAll, setSelectAll] = useState(false);
     const [selectedID, setSelectedID] = useState([]);
     const [isActionAlertVisible, setActionAlertVisible] = useState({
         description: '',
@@ -29,7 +30,6 @@ const UsersTable = () => {
     }, []);
 
     const handleCheckboxChange = (id, isChecked) => {
-        // Ваш код обработки изменения состояния чекбокса
         setSelectedID((prevSelectedID) => {
             if (isChecked) {
                 return [...prevSelectedID, id];
@@ -37,6 +37,11 @@ const UsersTable = () => {
                 return prevSelectedID.filter((item) => item !== id);
             }
         });
+    };
+
+    const handleSelectAllCheckboxChange = (isChecked) => {
+        setSelectAll(isChecked);
+        setSelectedID(isChecked ? users.map((user) => user._id) : []);
     };
 
     const onClickHandler = (action) => {
@@ -194,7 +199,15 @@ const UsersTable = () => {
                 <thead className="bg-gray-400 text-gray-800">
                     <tr>
                         <th className="py-2 px-4">
-                            <input type="checkbox" className="form-checkbox" />
+                            <input
+                                type="checkbox"
+                                className="form-checkbox"
+                                onChange={(e) =>
+                                    handleSelectAllCheckboxChange(
+                                        e.target.checked
+                                    )
+                                }
+                            />
                         </th>
                         <th className="py-2 px-4">Name</th>
                         <th className="py-2 px-4">Email</th>
@@ -210,6 +223,7 @@ const UsersTable = () => {
                                 <td className="py-2 px-4">
                                     <input
                                         type="checkbox"
+                                        checked={selectAll ? true : undefined}
                                         className="form-checkbox"
                                         onChange={(e) =>
                                             handleCheckboxChange(
