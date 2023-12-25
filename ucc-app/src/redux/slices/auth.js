@@ -2,12 +2,12 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from '../../axios';
 
 export const fetchAuth = createAsyncThunk('fetchAuth', async (userData) => {
-    const { data } = await axios.post('https://ucc-app-b.vercel.app/login', userData);
+    const { data } = await axios.post('/login', userData);
     return data;
 });
 
 export const fetchAuthMe = createAsyncThunk('fetchAuthMe', async () => {
-    const { data } = await axios.get('https://ucc-app-b.vercel.app/auth/me');
+    const { data } = await axios.get('/auth/me');
     return data;
 });
 
@@ -15,7 +15,7 @@ export const fetchRegister = createAsyncThunk(
     'fetchRegister',
     async (userData, { rejectWithValue }) => {
         try {
-            const { data } = await axios.post('https://ucc-app-b.vercel.app/register', userData);
+            const { data } = await axios.post('/register', userData);
             return data;
         } catch (error) {
             return rejectWithValue(error.response.data);

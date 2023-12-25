@@ -16,7 +16,6 @@ const MainMenu = () => {
         }
     }, [isAuth]);
 
-    console.log(isAuth);
 
     const logoutHandler = () => {
         dispatch(logout());

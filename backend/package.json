@@ -5,9 +5,7 @@
     "main": "index.js",
     "type": "module",
     "scripts": {
-        "start": "node index.js",
-        "build": "npm i",
-        "servDev": "chmod +x node_modules/.bin/nodemon && nodemon index.js"
+        "servDev": "nodemon index.js"
     },
     "keywords": [],
     "author": "",
